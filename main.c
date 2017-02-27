@@ -5,7 +5,7 @@
 #include "ml6.h"
 #include "display.h"
 #include "draw.h"
-#include "matrix.h"
+#include "matrix.c"
 
 int main() {
 
@@ -13,6 +13,7 @@ int main() {
   struct matrix *edges;
 
   edges = new_matrix(4, 4);
+  edges->lastcol = 4;
   print_matrix(edges);
   ident(edges);
   print_matrix(edges);

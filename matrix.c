@@ -15,8 +15,9 @@ void print_matrix(struct matrix *m) {
   int c = 0;
   for(c; c < m->lastcol; c++){
     for(r; r< m->rows; r++){
-      printf("[%d]\n", m->m[c][r]);
+      printf("[%d]ggg", m->m[c][r]);
     }
+    printf("\n");
   }
 
 }
@@ -39,6 +40,7 @@ void ident(struct matrix *m) {
 	m->m[r][c] =  0.0;
       }
     }
+  }
 
 }
 
