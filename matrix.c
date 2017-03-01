@@ -13,13 +13,15 @@ print the matrix
 void print_matrix(struct matrix *m) {
   int r = 0;
   int c = 0;
-  for(c; c < m->lastcol; c++){
-    for(r; r< m->rows; r++){
-      printf("[%d]ggg", m->m[c][r]);
+  
+    for(r; r< m->rows; r++){  
+      for(c; c < m->lastcol; c++){
+	printf("[%d]",(int) m->m[r][c]);
     }
+    c = 0;
     printf("\n");
   }
-
+  
 }
 
 /*-------------- void ident() --------------
@@ -40,6 +42,7 @@ void ident(struct matrix *m) {
 	m->m[r][c] =  0.0;
       }
     }
+    c = 0;
   }
 
 }
@@ -59,6 +62,8 @@ void scalar_mult(double x, struct matrix *m) {
     for(c; c < m->lastcol; c++){
       m->m[r][c] = (m-> m[r][c]) * x;
     }
+  
+    c = 0;
   }
 }
 
@@ -71,6 +76,20 @@ Returns:
 a*b -> b
 */
 void matrix_mult(struct matrix *a, struct matrix *b) {
+
+  int r = 0;
+  int c = 0;
+  for(r; r< b->rows; r++){
+    for(c; c < b->lastcol; c++){
+      double tot = 0;
+      int c2;
+      for(c2 = 0; c2 < a->lastcol; c2++){
+	tot += (b->m[r][c]) * (a->m[r][c2]);
+      }
+      b->m[r][c] = tot;
+    }
+    c = 0;
+  }
 }
 
 
